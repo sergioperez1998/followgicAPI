@@ -1,0 +1,1889 @@
+openapi: 3.0.0
+servers:
+  - url: 'http://127.0.0.1:8000'
+    description: ''
+    variables: {}
+info:
+  version: 7f249d0a-6bdd-140e-93b5-a3b2b39ae11d
+  title: Followgic
+  description: ''
+  termsOfService: ''
+  contact: {}
+  license:
+    name: ''
+paths:
+  /user/miPerfil/:
+    get:
+      summary: miPerfil
+      description: ''
+      operationId: miPerfil
+      parameters:
+        - $ref: '#/components/parameters/password'
+        - $ref: '#/components/parameters/username'
+        - $ref: '#/components/parameters/Authorization'
+        - $ref: '#/components/parameters/Content-Type'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Usuario
+  /user/token/login:
+    post:
+      summary: tokenLogin
+      description: ''
+      operationId: tokenLogin
+      parameters:
+        - name: password
+          in: query
+          required: true
+          style: form
+          schema:
+            type: string
+            example: admin
+          description: ''
+        - name: username
+          in: query
+          required: true
+          style: form
+          schema:
+            type: string
+            example: admin
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        description: ''
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                username: sergimac98
+                password: sergimac98
+            example: "{\n\t\"username\" : \"sergimac98\",\n\t\"password\" : \"sergimac98\"\n}"
+      tags:
+        - Usuario
+  /user/token/logout:
+    post:
+      summary: tokenLogout
+      description: ''
+      operationId: tokenLogout
+      parameters:
+        - name: password
+          in: query
+          required: true
+          style: form
+          schema:
+            type: string
+            example: admin
+          description: ''
+        - name: username
+          in: query
+          required: true
+          style: form
+          schema:
+            type: string
+            example: admin
+          description: ''
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token 269370ad7aef1636ebafa653767f0ca8edc4825f
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        description: ''
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - password
+                - username
+              properties:
+                password:
+                  type: string
+                  example: '"admin"'
+                username:
+                  type: string
+                  example: '"admin"'
+            example:
+              - key: password
+                value: '"admin"'
+                description: ''
+                type: text
+              - key: username
+                value: '"admin"'
+                description: ''
+                type: text
+      tags:
+        - Usuario
+  /user/users/:
+    post:
+      summary: registroMago
+      description: ''
+      operationId: registroMago
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        description: ''
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                username: vamosaprobarlocalizacionesdeverdad
+                email: danidaortiz@gmail.com
+                telefono: '676545654'
+                nombre: Dani Ortiz
+                nombre_artistico: Dani Daortiz
+                descripcion: prueba
+                pagina_web: 'http://Prueba.com'
+                password: probandodeverdad
+                re_password: probandodeverdad
+                localizacion: 28
+            example: |-
+              {
+                      "username": "vamosaprobarlocalizacionesdeverdad",
+                      "email": "danidaortiz@gmail.com",
+                      "telefono": "676545654",
+                      "nombre": "Dani Ortiz",
+                      "nombre_artistico": "Dani Daortiz",
+                      "descripcion": "prueba",
+                      "pagina_web": "http://Prueba.com",
+                      "password": "probandodeverdad",
+                      "re_password": "probandodeverdad",
+                      "localizacion": 28
+                  }
+      tags:
+        - Usuario
+  /user/users/me/:
+    put:
+      summary: editarMago
+      description: ''
+      operationId: editarMago
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token 29e35e5a73c8033ad6669fcfbb830aa5dcfa7637
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        description: ''
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                email: alvarodiaz@gmail.com
+                telefono: '618303371'
+                nombre: Álvaro
+                nombre_artistico: AlvaritoMagic98
+                descripcion: Probando el edit de modalidades
+                pagina_web: ''
+                modalidades:
+                  - 7
+            example: |
+              {
+                  "email": "alvarodiaz@gmail.com",
+                  "telefono": "618303371",
+                  "nombre": "Álvaro",
+                  "nombre_artistico": "AlvaritoMagic98",
+                  "descripcion": "Probando el edit de modalidades",
+                  "pagina_web": "",
+                  "modalidades": [
+                      7
+                  ]
+              }
+      tags:
+        - Usuario
+  /user/modalidades/:
+    get:
+      summary: getModalidades
+      description: ''
+      operationId: getModalidades
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Usuario
+  /user/setImagen/:
+    post:
+      summary: editarImagenMago
+      description: ''
+      operationId: editarImagenMago
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token 29e35e5a73c8033ad6669fcfbb830aa5dcfa7637
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        description: ''
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - file
+              properties:
+                file:
+                  type: string
+                  format: binary
+            example:
+              - key: foto
+                value: ''
+                description: ''
+                type: file
+      tags:
+        - Usuario
+  /user/listadoMagos/:
+    get:
+      summary: listadoMagos
+      description: ''
+      operationId: listadoMagos
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token 955ffbe8cd6770be32a13304a655fe571331ebeb
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Usuario
+  /user/verPerfil/4/:
+    get:
+      summary: verPerfilMago
+      description: ''
+      operationId: verPerfilMago
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token 2ba56330283f68ec8f4659014ae6c13455bf1a4a
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Usuario
+  /user/amigos/:
+    get:
+      summary: verMisAmigos
+      description: ''
+      operationId: verMisAmigos
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token a32007300b5b29ec7fb0199ea99679bda7faa4c6
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Usuario
+  /user/buscarMagos/:
+    post:
+      summary: buscarMagos
+      description: ''
+      operationId: buscarMagos
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token 133a7d2513500be79510ebf91721d246fe8c5b45
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        description: ''
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                nombre: j
+                modalidades:
+                  - 8
+                  - 7
+            example: "{\n\t\"nombre\": \"j\",\n\t\"modalidades\": [8,7]\n}"
+      tags:
+        - Usuario
+  /user/crearModalidad/:
+    post:
+      summary: crearModalidad
+      description: ''
+      operationId: crearModalidad
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token 592f4a7822573c293a95bc26f9a7c2ca9e233d24
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        description: ''
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                nombre: cartomago2
+            example: "{\n\t\"nombre\": \"cartomago2\"\n}"
+      tags:
+        - Usuario
+  /peticiones/crearSolicitudAmistad/1/:
+    get:
+      summary: crearSolicitudAmistad
+      description: ''
+      operationId: crearSolicitudAmistad
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token 85454ea87de69c785bc1c7ddda621502206332ac
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Peticiones
+  /peticiones/misNotificaciones/:
+    get:
+      summary: misNotificacionesAmistad
+      description: ''
+      operationId: misNotificacionesAmistad
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token 29e35e5a73c8033ad6669fcfbb830aa5dcfa7637
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Peticiones
+  /peticiones/rechazarSolicitud/1/:
+    get:
+      summary: rechazarPeticionAmistad
+      description: ''
+      operationId: rechazarPeticionAmistad
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token 621f1f252d6d84e9f633695e613743d2201fb409
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Peticiones
+  /peticiones/aceptarSolicitud/2/:
+    get:
+      summary: aceptarPeticionAmistad
+      description: ''
+      operationId: aceptarPeticionAmistad
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token 495eb0cc2adc87bfac4b7c5e15f0e9a77a1c602e
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Peticiones
+  /peticiones/eliminarAmigo/2/:
+    get:
+      summary: eliminarAmigo
+      description: ''
+      operationId: eliminarAmigo
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token f81dbcbd5e51dde650d93e2d1f2d035ede8053f8
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Peticiones
+  /peticiones/peticionesPendientes:
+    get:
+      summary: usuariosConNotificacionesPendientes
+      description: ''
+      operationId: usuariosConNotificacionesPendientes
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token 1420059859c244a0bff22a906a6a6497f0f4e83d
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Peticiones
+  /peticiones/cancelarSolicitud/1/:
+    get:
+      summary: cancelarSolicitudAmistad
+      description: ''
+      operationId: cancelarSolicitudAmistad
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token f4404ee39a1f523078d464d5b4da03e88347ff85
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Peticiones
+  /peticiones/peticionPendienteConUsuario/2/:
+    get:
+      summary: obtenerPeticionPendienteUsuario
+      description: ''
+      operationId: obtenerPeticionPendienteUsuario
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token e1e010a9305b25588a91e25cba20e13e1eb89c3b
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Peticiones
+  /preguntas/:
+    get:
+      summary: obtenerPreguntas
+      description: ''
+      operationId: obtenerPreguntas
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Preguntas
+  /mensajes/enviarMensaje/16/:
+    post:
+      summary: enviarMensaje
+      description: ''
+      operationId: enviarMensaje
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token 2d9484dab8db94ae579dc075600493433042f331
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        description: ''
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                cuerpo: Primer mensaje que te envio ale
+            example: "{\n\t\"cuerpo\": \"Primer mensaje que te envio ale\"\n}"
+      tags:
+        - Mensajes
+  /mensajes/nuevosMensajes/:
+    get:
+      summary: mensajesNoLeidos
+      description: ''
+      operationId: mensajesNoLeidos
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token 2d9484dab8db94ae579dc075600493433042f331
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Mensajes
+  /mensajes/mensajes/:
+    get:
+      summary: verMensajes
+      description: ''
+      operationId: verMensajes
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token 2d9484dab8db94ae579dc075600493433042f331
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Mensajes
+  /mensajes/verConversacion/6/:
+    get:
+      summary: verConversacion
+      description: ''
+      operationId: verConversacion
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token 2d9484dab8db94ae579dc075600493433042f331
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Mensajes
+  /mensajes/eliminarMensaje/3/:
+    delete:
+      summary: eliminarMensaje
+      description: ''
+      operationId: eliminarMensaje
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token 2d9484dab8db94ae579dc075600493433042f331
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Mensajes
+  /mensajes/verConversacionPorMago/3/:
+    get:
+      summary: verConversaciónPorMago
+      description: ''
+      operationId: verConversaciónPorMago
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token 241025e456cec92c3a45dfb5e7505c0b34e76e05
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Mensajes
+  /mensajes/mensajesSinLeerPorMago/2/:
+    get:
+      summary: mensajesNoLeidosPorMago
+      description: ''
+      operationId: mensajesNoLeidosPorMago
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token a9b8dbc8d3ca77fb762972a49583db7ccc62214e
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Mensajes
+  /eventos/crearEvento/:
+    post:
+      summary: crearEvento
+      description: ''
+      operationId: crearEvento
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token a9b8dbc8d3ca77fb762972a49583db7ccc62214e
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        description: ''
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                titulo: Privado con localizacion
+                tipo: 0
+                privacidad: 1
+                link_conferencia: 'http://probando.com'
+                descripcion: Descripcion evento 1
+                fecha_evento: '2021-08-15'
+                hora_evento: '14:00:00'
+                aforo: 100
+                foto: ''
+                modalidades:
+                  - 7
+                  - 8
+                comentario: ''
+                localizacion: 29
+            example: "{\n\t\"titulo\": \"Privado con localizacion\",\n\t\"tipo\": 0,\n\t\"privacidad\": 1,\n\t\"link_conferencia\": \"http://probando.com\",\n\t\"descripcion\": \"Descripcion evento 1\",\n\t\"fecha_evento\": \"2021-08-15\",\n\t\"hora_evento\": \"14:00:00\",\n\t\"aforo\": 100,\n\t\"foto\": \"\",\n\t\"modalidades\": [\n        7,\n        8\n    ],\n    \"comentario\": \"\",\n    \"localizacion\": 29\n}"
+      tags:
+        - Eventos
+  /eventos/verEvento/17/:
+    get:
+      summary: verEvento
+      description: ''
+      operationId: verEvento
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token a9b8dbc8d3ca77fb762972a49583db7ccc62214e
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Eventos
+  /eventos/listarEventos/:
+    get:
+      summary: listarEventos
+      description: ''
+      operationId: listarEventos
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token 955ffbe8cd6770be32a13304a655fe571331ebeb
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Eventos
+  /eventos/setImagenverEvento/1/:
+    post:
+      summary: setImagenEvento
+      description: ''
+      operationId: setImagenEvento
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token a9b8dbc8d3ca77fb762972a49583db7ccc62214e
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        description: ''
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                foto: ''
+            example: "{\n\t\"foto\": \"\"\n}"
+      tags:
+        - Eventos
+  /eventos/inscribirseEvento/9/:
+    get:
+      summary: inscribirseEvento
+      description: ''
+      operationId: inscribirseEvento
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token 9efaf62f2f7896810132fdb092357750d9347d13
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Eventos
+  /eventos/cancelarInscripcionEvento/17/:
+    get:
+      summary: cancelarInscripcionEvento
+      description: ''
+      operationId: cancelarInscripcionEvento
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token 9efaf62f2f7896810132fdb092357750d9347d13
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Eventos
+  /eventos/verMagosInscritosPorEvento/1/:
+    get:
+      summary: verMagosInscritosPorEvento
+      description: ''
+      operationId: verMagosInscritosPorEvento
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token 9efaf62f2f7896810132fdb092357750d9347d13
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Eventos
+  /eventos/editarEvento/2/:
+    put:
+      summary: editarEvento
+      description: ''
+      operationId: editarEvento
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token a9b8dbc8d3ca77fb762972a49583db7ccc62214e
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        description: ''
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                titulo: Evento probando las modalidades por tercera vez
+                tipo: 0
+                link_conferencia: 'http://probando.com'
+                descripcion: Descripcion evento 1
+                fecha_evento: '2021-08-15'
+                hora_evento: '14:00:00'
+                aforo: 100
+                foto: ''
+                modalidades:
+                  - 7
+                  - 8
+            example: "{\n\t\"titulo\": \"Evento probando las modalidades por tercera vez\",\n\t\"tipo\": 0,\n\t\"link_conferencia\": \"http://probando.com\",\n\t\"descripcion\": \"Descripcion evento 1\",\n\t\"fecha_evento\": \"2021-08-15\",\n\t\"hora_evento\": \"14:00:00\",\n\t\"aforo\": 100,\n\t\"foto\": \"\",\n\t\"modalidades\": [\n        7,\n        8\n    ]\n}"
+      tags:
+        - Eventos
+  /eventos/eliminarAsistenteEvento/1/2/:
+    get:
+      summary: eliminarAsistenteEvento
+      description: ''
+      operationId: eliminarAsistenteEvento
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token a9b8dbc8d3ca77fb762972a49583db7ccc62214e
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Eventos
+  /eventos/eliminarEvento/1/:
+    delete:
+      summary: eliminarEvento
+      description: ''
+      operationId: eliminarEvento
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token a9b8dbc8d3ca77fb762972a49583db7ccc62214e
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Eventos
+  /eventos/silenciarEvento/9/:
+    get:
+      summary: silenciarMensajesEvento
+      description: ''
+      operationId: silenciarMensajesEvento
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token 9efaf62f2f7896810132fdb092357750d9347d13
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Eventos
+  /eventos/habilitarMensajesEvento/9/:
+    get:
+      summary: habilitarMensajesEvento
+      description: ''
+      operationId: habilitarMensajesEvento
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token 9efaf62f2f7896810132fdb092357750d9347d13
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Eventos
+  /eventos/enviarComentario/12/:
+    post:
+      summary: enviarComentario
+      description: ''
+      operationId: enviarComentario
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token a9b8dbc8d3ca77fb762972a49583db7ccc62214e
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        description: ''
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                cuerpo: Comentario pero solo una vez
+            example: "{\n\t\"cuerpo\": \"Comentario pero solo una vez\"\n}"
+      tags:
+        - Eventos
+  /eventos/listarEventosCreadosPorMi/:
+    get:
+      summary: eventosCreadosPorMi
+      description: ''
+      operationId: eventosCreadosPorMi
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token a9b8dbc8d3ca77fb762972a49583db7ccc62214e
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Eventos
+  /eventos/listarEventosSubscritos/:
+    get:
+      summary: eventosSubscritos
+      description: ''
+      operationId: eventosSubscritos
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token 9efaf62f2f7896810132fdb092357750d9347d13
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Eventos
+  /eventos/verUltimoComentarioEvento/12/:
+    get:
+      summary: verUltimoComentarioEvento
+      description: ''
+      operationId: verUltimoComentarioEvento
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token a9b8dbc8d3ca77fb762972a49583db7ccc62214e
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Eventos
+  /eventos/verComentariosEvento/12/:
+    get:
+      summary: verComentariosEvento
+      description: ''
+      operationId: verComentariosEvento
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token a9b8dbc8d3ca77fb762972a49583db7ccc62214e
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Eventos
+  /eventos/eliminarComentario/8/:
+    delete:
+      summary: eliminarComentario
+      description: ''
+      operationId: eliminarComentario
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token a9b8dbc8d3ca77fb762972a49583db7ccc62214e
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Eventos
+  /eventos/generarCodigo/17|2/:
+    get:
+      summary: generarCodigoInvitación
+      description: ''
+      operationId: generarCodigoInvitación
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token a9b8dbc8d3ca77fb762972a49583db7ccc62214e
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Eventos
+  /eventos/aceptarCodigo/2/:
+    post:
+      summary: aceptarCodigoInvitacion
+      description: ''
+      operationId: aceptarCodigoInvitacion
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token 9efaf62f2f7896810132fdb092357750d9347d13
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/x-www-form-urlencoded
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        description: ''
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: string
+              example: ''
+            example: ''
+      tags:
+        - Eventos
+  /eventos/rechazarInvitacion/3/:
+    delete:
+      summary: rechazarInvitacion
+      description: ''
+      operationId: rechazarInvitacion
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token 9efaf62f2f7896810132fdb092357750d9347d13
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Eventos
+  /eventos/verMisInvitaciomes/:
+    get:
+      summary: verMisPeticionesPendientes
+      description: ''
+      operationId: verMisPeticionesPendientes
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token 9efaf62f2f7896810132fdb092357750d9347d13
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Eventos
+  /eventos/comentariosNoLeidos/12/:
+    get:
+      summary: numeroComentariosNoLeidos
+      description: ''
+      operationId: numeroComentariosNoLeidos
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token a9b8dbc8d3ca77fb762972a49583db7ccc62214e
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Eventos
+  /eventos/usuariosParaInvitar/12/:
+    get:
+      summary: verUsuariosParaInvitar
+      description: ''
+      operationId: verUsuariosParaInvitar
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token a9b8dbc8d3ca77fb762972a49583db7ccc62214e
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Eventos
+  /eventos/eventosPorUsuario/2/:
+    get:
+      summary: eventosPorUsuario
+      description: ''
+      operationId: eventosPorUsuario
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token 955ffbe8cd6770be32a13304a655fe571331ebeb
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Eventos
+  /localizacion/crearLocalizacion/:
+    post:
+      summary: crearLocalizacion
+      description: ''
+      operationId: crearLocalizacion
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        description: ''
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                longitud: 41
+                latitud: 85
+                direccion: España
+            example: "{\n\t\"longitud\": 41.0,\n\t\"latitud\": 85.0,\n\t\"direccion\": \"España\"\n}"
+      tags:
+        - Localizacion
+  /localizacion/obtenerLocalizacion/21/:
+    get:
+      summary: obtenerLocalizacionUsuarioDado
+      description: ''
+      operationId: obtenerLocalizacionUsuarioDado
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token a9b8dbc8d3ca77fb762972a49583db7ccc62214e
+          description: ''
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Localizacion
+  /localizacion/obtenerLocalizacionTodosUsuarios/:
+    get:
+      summary: obtenerLocalizacionTodosUsuarios
+      description: ''
+      operationId: obtenerLocalizacionTodosUsuarios
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token 955ffbe8cd6770be32a13304a655fe571331ebeb
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Localizacion
+  /localizacion/obtenerLocalizacionTodosEventos/:
+    get:
+      summary: obtenerLocalizacionTodosEventos
+      description: ''
+      operationId: obtenerLocalizacionTodosEventos
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token 955ffbe8cd6770be32a13304a655fe571331ebeb
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      tags:
+        - Localizacion
+  /localizacion/editarLocalizacion/42/:
+    post:
+      summary: editarLocalizaciones
+      description: ''
+      operationId: editarLocalizaciones
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+          description: ''
+        - name: Authorization
+          in: header
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: Token 955ffbe8cd6770be32a13304a655fe571331ebeb
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        description: ''
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              example:
+                longitud: 33
+                latitud: 33
+                direccion: Ecija
+            example: "{\n\t\"longitud\": 33,\n\t\"latitud\": 33,\n\t\"direccion\": \"Ecija\"\n}"
+      tags:
+        - Localizacion
+components:
+  parameters:
+    password:
+      name: password
+      in: query
+      required: true
+      style: form
+      schema:
+        type: string
+        example: admin
+      description: ''
+    username:
+      name: username
+      in: query
+      required: true
+      style: form
+      schema:
+        type: string
+        example: admin
+      description: ''
+    Authorization:
+      name: Authorization
+      in: header
+      required: true
+      style: simple
+      schema:
+        type: string
+        example: Token 29e35e5a73c8033ad6669fcfbb830aa5dcfa7637
+      description: ''
+    Content-Type:
+      name: Content-Type
+      in: header
+      required: true
+      style: simple
+      schema:
+        type: string
+        example: application/json
+      description: ''
+security: []
+tags: []
+externalDocs:
+  url: ''
+  description: ''
+warnings: []
